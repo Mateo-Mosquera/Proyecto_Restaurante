@@ -1,31 +1,32 @@
 package DataAccess.DTO;
 
-public class ClienteDTO {
-    private Integer idCliente;
-    private String nombre;
-    private String apellido;
-    private Integer telefono;
-    private String correo;
-    private double totalReservas; // Nuevo campo para el total de reservas
-    private double descuento; // Nuevo campo para el descuento
-    private double iva; // Nuevo campo para el IVA
-
-    public ClienteDTO() {}
-
-    public ClienteDTO(String nombre) {
+public class ClientesDTO {
+    private Integer     idCliente;
+    private String      cedula;
+    private String      nombre;
+    private String      apellido;
+    private Integer     telefono;
+    private String      correo;
+    private double      totalReservas; // Nuevo campo para el total de reservas
+    private double      descuento; // Nuevo campo para el descuento
+    private double      iva; // Nuevo campo para el IVA
+    
+    public ClientesDTO() {}
+    
+    public ClientesDTO(String nombre) {
         this.nombre = nombre;
     }
-
-    public ClienteDTO(Integer idCliente, String nombre, String apellido, Integer telefono, String correo) {
-        this.idCliente  = idCliente;
+    
+    public ClientesDTO(String cedula, String nombre, String apellido, Integer telefono, String correo) {
+        this.cedula     = cedula;
         this.nombre     = nombre;
         this.apellido   = apellido;
         this.telefono   = telefono;
         this.correo     = correo;
     }
-
-    public ClienteDTO(Integer idCliente, String nombre, String apellido, Integer telefono, String correo, double totalReservas, double descuento, double iva) {
-        this.idCliente      = idCliente;
+    
+    public ClientesDTO(String cedula, String nombre, String apellido, Integer telefono, String correo, double totalReservas, double descuento, double iva) {
+        this.cedula         = cedula;
         this.nombre         = nombre;
         this.apellido       = apellido;
         this.telefono       = telefono;
@@ -34,13 +35,21 @@ public class ClienteDTO {
         this.descuento      = descuento;
         this.iva            = iva;
     }
-
+    
     public Integer getIdCliente() {
         return idCliente;
     }
 
     public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+    
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -102,13 +111,13 @@ public class ClienteDTO {
     @Override
     public String toString() {
         return getClass().getName()
-                + "\n idCliente="       + getIdCliente()
-                + "\n nombre="          + getNombre()
-                + "\n apellido="        + getApellido()
-                + "\n telefono="        + getTelefono()
-                + "\n correo="          + getCorreo()
-                + "\n totalReservas="   + getTotalReservas()
-                + "\n descuento="       + getDescuento()
-                + "\n iva="             + getIva();
+                + "\n cedula: "          + getCedula()
+                + "\n nombre: "          + getNombre()
+                + "\n apellido: "        + getApellido()
+                + "\n telefono: "        + getTelefono()
+                + "\n correo: "          + getCorreo()
+                + "\n totalReservas: "   + getTotalReservas()
+                + "\n descuento: "       + getDescuento()
+                + "\n iva: "             + getIva();
     }
 }

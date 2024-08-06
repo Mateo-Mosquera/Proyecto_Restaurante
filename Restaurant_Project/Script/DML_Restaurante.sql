@@ -28,7 +28,7 @@ INSERT INTO Mesas
 ,(4);
 
 INSERT INTO Reservas
-(Cedula         , Id_Mesa   , Fecha         , Hora) VALUES
+(Cedula         , IDMesa   , Fecha         , Hora) VALUES
 ('0650090160'   , 3         , '2024-08-10'  , '10:00');
 
 INSERT INTO Personal (Cedula, Nombre, Apellido, Telefono, Correo)
