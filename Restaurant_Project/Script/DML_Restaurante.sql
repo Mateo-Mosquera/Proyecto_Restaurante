@@ -1,77 +1,76 @@
--- database: ../DataBase/Restaurante.sqlite
-
+--database: ../database/Restaurante.sqlite
 /*
 CopyRight
-autor: Mateo_Mosquera
-description: CRUD De datos para restaurante
+@author: Nic1205
+@version: 1.0
+@date: 01/08/2024
+@description: Script para modificar datos
 */
-
--- Limpiar las tablas antes de insertar datos
-DELETE FROM Reservas_Mesas;
-DELETE FROM Reservas;
+DELETE FROM Clientes;
 DELETE FROM Mesas;
-DELETE FROM Gerente;
-DELETE FROM Restaurante;
-DELETE FROM Cliente;
+DELETE FROM Reservas;
 
--- Insertar datos en la tabla Cliente
-INSERT INTO Cliente (Nombre, Apellido, Telefono, Correo)
-VALUES
-('Mateo', 'Mosquera', '0979391707', 'mateomosquera13@gmail.com'),
-('Luis', 'Fernandez', '0923451707', 'luisfernandez@gmail.com'),
-('Sandra', 'Martinez', '0912345678', 'sandramartinez@gmail.com');
+INSERT INTO Clientes
+ (Cedula        , Nombre        , Apellido  , Telefono      , Correo) VALUES
+ ('0650090160'  , 'Alejandro'   , 'Novillo' , '0992660401'  , 'alejandro.novillo.u@gmail.com');
 
--- Actualizar nombres de clientes a mayúsculas
-UPDATE Cliente
-SET Nombre = UPPER(Nombre);
+INSERT INTO Mesas
+ (Capacidad) VALUES
+ (1)
+,(1)
+,(2)
+,(2)
+,(2)
+,(2)
+,(4)
+,(4)
+,(4)
+,(4);
 
--- Consultar datos de la tabla Cliente
-SELECT * FROM Cliente;
+INSERT INTO Reservas
+(Cedula         , Id_Mesa   , Fecha         , Hora) VALUES
+('0650090160'   , 3         , '2024-08-10'  , '10:00');
 
--- Insertar datos en la tabla Restaurante
-INSERT INTO Restaurante (Nombre, Direccion)
-VALUES
-('Nombre del restaurante 1', 'Av. 12 de octubre'),
-('Nombre del restaurante 2', 'Av. Naciones Unidas');
+INSERT INTO Personal (Cedula, Nombre, Apellido, Telefono, Correo)
+VALUES 
+('1234567890', 'Juan', 'Pérez', '555-1234', 'juan.perez@restaurante.com'),
+('0987654321', 'María', 'González', '555-5678', 'maria.gonzalez@restaurante.com');
 
--- Consultar datos de la tabla Restaurante
-SELECT * FROM Restaurante;
 
--- Insertar datos en la tabla Gerente
-INSERT INTO Gerente (ID_Restaurante, Nombre, Correo)
-VALUES
-(1, 'Carlos Ramirez', 'carlosramirez@gmail.com');
+UPDATE Reservas
+SET Estado = 'C'
+WHERE Cedula = '0650090160';
 
--- Consultar datos de la tabla Gerente
-SELECT * FROM Gerente;
+UPDATE Mesas
+SET Estado = 'X'
+WHERE Id_Mesa = 3;
 
--- Insertar datos en la tabla Mesas
-INSERT INTO Mesas (ID_Restaurante, NumeroMesa, Capacidad)
-VALUES
-(1, 1, 4),
-(1, 2, 4),
-(1, 3, 2),
-(2, 1, 6),
-(2, 2, 4);
+SELECT
+    count(Estado) 'Nro de Mesas Disponibles'
+    FROM Mesas
+    WHERE Estado = 'A';
 
--- Consultar datos de la tabla Mesas
-SELECT * FROM Mesas;
+SELECT
+    count(Estado) ' Nro de Reservas'
+    FROM Reservas
+    WHERE Estado = 'R';
 
--- Insertar datos en la tabla Reservas
-INSERT INTO Reservas (ID_Gerente, ID_Cliente, Fecha_reserva, Estado)
-VALUES
-(1, 1, '2024-07-23', 'pendiente'),
-(1, 2, '2024-07-26', 'confirmada');
+SELECT
+    count(Estado) 'Nro de Reservas Finalizadas'
+    FROM Reservas
+    WHERE Estado = 'F';
 
--- Consultar datos de la tabla Reservas
-SELECT * FROM Reservas;
-
--- Insertar datos en la tabla Reservas_Mesas
-INSERT INTO Reservas_Mesas (ID_Reservas, ID_Mesas)
-VALUES
-(1, 1),
-(2, 4),
-(2, 5);
-
--- Consultar datos de la tabla Reservas_Mesas
-SELECT * FROM Reservas_Mesas;
+SELECT
+     (Reservas.Id_Mesa) 'Mesa reservada'
+    ,(Reservas.Cedula) 'Cedula Cliente'
+    ,(Clientes.Nombre || ' ' || Clientes.Apellido) 'Cliente'
+    ,(Reservas.Fecha) 'Fecha de Reserva'
+    ,(Reservas.Hora) 'Hora de Reserva'
+    ,CASE Reservas.Estado
+    WHEN 'R' THEN 'Realizada'
+    WHEN 'P' THEN 'Pendiente'
+    WHEN 'C' THEN 'Cancelada'
+    WHEN 'F' THEN 'Finalizada'
+    END AS 'Estado de la Reserva'
+    FROM Reservas
+    JOIN Clientes ON Reservas.Cedula = Clientes.Cedula;

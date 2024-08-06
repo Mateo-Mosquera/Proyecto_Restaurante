@@ -1,62 +1,48 @@
--- database: ../DataBase/Restaurante.sqlite
-
+--database: ../database/Restaurante.sqlite
 /*
 CopyRight
-autor: Mateo_Mosquera
-description: Definición de la estructura de las tablas para el sistema de reservas del restaurante
+@author: Nic1205
+@version: 1.0
+@date: 01/08/2024
+@description: Script para crear las estructuras de las entidades del sistema de reservas
 */
 
--- Crear la tabla Cliente
-CREATE TABLE Cliente (
-    IDCliente INTEGER PRIMARY KEY AUTOINCREMENT,
-    Nombre TEXT NOT NULL,
-    Apellido TEXT NOT NULL,
-    Telefono TEXT NOT NULL,
-    Correo TEXT NOT NULL,
-    Estado CHAR(1) DEFAULT 'A' -- Estado 'A' significa activo, 'X' significa eliminado
+DROP TABLE IF EXISTS Clientes;
+DROP TABLE IF EXISTS Mesas;
+DROP TABLE IF EXISTS Reservas;
+DROP TABLE IF EXISTS Personal;
+
+CREATE TABLE Clientes (
+   Cedula           VARCHAR(10) PRIMARY KEY
+  ,Nombre           VARCHAR(50) NOT NULL
+  ,Apellido         VARCHAR(50) NOT NULL
+  ,Telefono         VARCHAR(20) NOT NULL
+  ,Correo           VARCHAR(50) NOT NULL
+  ,FechaCreacion    DATE DEFAULT CURRENT_DATE
 );
 
--- Crear la tabla Restaurante
-CREATE TABLE Restaurante (
-    IDRestaurante INTEGER PRIMARY KEY AUTOINCREMENT,
-    Nombre TEXT NOT NULL,
-    Direccion TEXT NOT NULL
-);
-
--- Crear la tabla Gerente
-CREATE TABLE Gerente (
-    IDGerente INTEGER PRIMARY KEY AUTOINCREMENT,
-    IDRestaurante INTEGER NOT NULL,
-    Nombre TEXT NOT NULL,
-    Correo TEXT NOT NULL,
-    FOREIGN KEY (IDRestaurante) REFERENCES Restaurante(IDRestaurante)
-);
-
--- Crear la tabla Mesas
 CREATE TABLE Mesas (
-    IDMesa INTEGER PRIMARY KEY AUTOINCREMENT,
-    IDRestaurante INTEGER NOT NULL,
-    NumeroMesa INTEGER NOT NULL,
-    Capacidad INTEGER NOT NULL,
-    FOREIGN KEY (IDRestaurante) REFERENCES Restaurante(IDRestaurante)
+   Id_Mesa      INTEGER PRIMARY KEY AUTOINCREMENT
+  ,Capacidad    INTEGER NOT NULL
+  ,Estado       VARCHAR(1) NOT NULL DEFAULT 'A' CHECK (Estado IN ('A', 'X'))
 );
 
--- Crear la tabla Reservas
 CREATE TABLE Reservas (
-    IDReserva INTEGER PRIMARY KEY AUTOINCREMENT,
-    IDGerente INTEGER NOT NULL,
-    IDCliente INTEGER NOT NULL,
-    Fecha_reserva DATE NOT NULL,
-    Estado TEXT NOT NULL,
-    FOREIGN KEY (IDGerente) REFERENCES Gerente(IDGerente),
-    FOREIGN KEY (IDCliente) REFERENCES Cliente(IDCliente)
+   Id_Reserva       INTEGER PRIMARY KEY AUTOINCREMENT
+  ,Cedula           VARCHAR(10) NOT NULL
+  ,Id_Mesa          INTEGER NOT NULL
+  ,Fecha            DATE NOT NULL
+  ,Hora             TIME NOT NULL
+  ,FechaCreacion    DATE DEFAULT CURRENT_DATE
+  ,Estado           VARCHAR(1) NOT NULL DEFAULT 'R' CHECK (Estado IN ('R', 'P', 'C', 'F'))
+  ,CONSTRAINT fk_Clientes FOREIGN KEY  (Cedula)    REFERENCES Clientes(Cedula)
+  ,CONSTRAINT fk_Mesas FOREIGN KEY  (Id_Mesa)   REFERENCES Mesas(Id_Mesa)
 );
-
--- Crear la tabla Reservas_Mesas
-CREATE TABLE Reservas_Mesas (
-    IDReservaMesa INTEGER PRIMARY KEY AUTOINCREMENT,
-    IDReserva INTEGER NOT NULL,
-    IDMesa INTEGER NOT NULL,
-    FOREIGN KEY (IDReserva) REFERENCES Reservas(IDReserva),
-    FOREIGN KEY (IDMesa) REFERENCES Mesas(IDMesa)
+CREATE TABLE Personal (
+   Cedula           VARCHAR(10) PRIMARY KEY
+  ,Nombre           VARCHAR(50) NOT NULL
+  ,Apellido         VARCHAR(50) NOT NULL
+  ,Telefono         VARCHAR(20) NOT NULL
+  ,Correo           VARCHAR(50) NOT NULL
+  ,FechaCreacion    DATE DEFAULT CURRENT_DATE
 );
