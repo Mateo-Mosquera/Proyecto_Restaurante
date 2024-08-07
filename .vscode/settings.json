@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "Restaurant_Project/lib/sqlite-jdbc-3.46.0.0.jar"
+        "Restaurant_Project/lib/sqlite-jdbc-3.46.0.0.jar",
+        "c:\\ProgramacionII\\ExoBot\\lib\\sqlite-jdbc-3.40.0.0.jar"
     ]
 }

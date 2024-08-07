@@ -21,14 +21,12 @@ CREATE TABLE Clientes (
   ,Correo           VARCHAR(50) NOT NULL
   ,FechaCreacion    DATE DEFAULT CURRENT_DATE
 );
-
 CREATE TABLE Mesas (
    IDMesa           INTEGER PRIMARY KEY AUTOINCREMENT
   ,Capacidad        INTEGER NOT NULL
   ,FechaCreacion    DATE DEFAULT CURRENT_DATE
   ,Estado           VARCHAR(1) NOT NULL DEFAULT 'A' CHECK (Estado IN ('A', 'X'))
 );
-
 CREATE TABLE Reservas (
    IDReserva        INTEGER PRIMARY KEY AUTOINCREMENT
   ,Cedula           VARCHAR(10) NOT NULL

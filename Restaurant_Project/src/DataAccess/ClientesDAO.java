@@ -66,7 +66,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
                      + ",Apellido           "
                      + ",Telefono           "
                      + ",Correo             "
-                     + "FROM Clientes       ";
+                     + "FROM Clientes)      ";
 
         try (Connection conn = openConnection();
              Statement stmt = conn.createStatement();

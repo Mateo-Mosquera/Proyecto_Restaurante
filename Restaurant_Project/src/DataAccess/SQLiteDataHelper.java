@@ -4,16 +4,27 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLiteDataHelper {
-    private static final String URL = "jdbc:sqlite:../DataBase/Restaurante.sqlite";
-
-    protected Connection openConnection() throws SQLException {
+public abstract class SQLiteDataHelper {
+    private static String DBPathConnection = "jdbc:sqlite:C:\\ProgramacionII\\Proyecto_Restaurante\\Restaurant_Project\\DataBase\\Restaurante.sqlite"; 
+    private static Connection conn = null;
+    // protected SQLiteDataHelper(){}
+    
+    protected static synchronized Connection openConnection() throws Exception{
         try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("SQLite JDBC driver not found.", e);
+            if(conn == null)
+                conn = DriverManager.getConnection(DBPathConnection);
+        } catch (SQLException e) {
+             throw e;   //new Exception(e,"SQLiteDataHelper","Fallo la coneccion a la base de datos");
+        } 
+        return conn;
+    }
+
+    protected static void closeConnection() throws Exception{
+        try {
+            if (conn != null)
+                conn.close();
+        } catch (Exception e) {
+            throw e;    //new Exception(e,"SQLiteDataHelper", "Fallo la conección con la base de datos");
         }
-        
-        return DriverManager.getConnection(URL);
     }
 }

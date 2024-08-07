@@ -4,22 +4,22 @@ import DataAccess.PersonalDAO;
 import DataAccess.DTO.PersonalDTO;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             // Crear instancias de DAO
             ClientesDAO clienteDAO = new ClientesDAO();
             PersonalDAO empleadoDAO = new PersonalDAO();
             
-            // Crear un nuevo cliente
-            ClientesDTO nuevoCliente = new ClientesDTO("0322158529","Juan", "Pérez", 123456789, "juanperez@example.com");
-            boolean clienteCreado = clienteDAO.create(nuevoCliente);
-            System.out.println("Cliente creado: " + clienteCreado);
-/*
             // Leer todos los clientes
             System.out.println("Clientes:");
             for (ClientesDTO cliente : clienteDAO.readAll()) {
                 System.out.println(cliente);
             }
+            
+            // Crear un nuevo cliente
+            ClientesDTO nuevoCliente = new ClientesDTO("03161564","JMAdsn", "Pérgsez", 1234566789, "juanperez@example.com");
+            boolean clienteCreado = clienteDAO.create(nuevoCliente);
+            System.out.println("Cliente creado: " + clienteCreado);
 
             // Actualizar un cliente
             ClientesDTO clienteActualizar = clienteDAO.readBy(1);
@@ -63,7 +63,7 @@ public class App {
             // Eliminar un empleado
             boolean empleadoEliminado = empleadoDAO.delete("1");
             System.out.println("empleado eliminado: " + empleadoEliminado);
-*/
+
         } catch (Exception e) {
             e.printStackTrace();
         }
