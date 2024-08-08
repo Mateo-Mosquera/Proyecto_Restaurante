@@ -8,11 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.PersonalDTO;
+import Framework.MsgException;
 
-public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
+public class PersonalDAO extends SQLiteDataHelper implements IGestionDAO<PersonalDTO> {
 
     @Override
-    public PersonalDTO readBy(Integer id) throws Exception {
+    public PersonalDTO readBy(String cedula) throws Exception {
         PersonalDTO personal = new PersonalDTO();
         String query = "SELECT ID           "
                      + ",Cedula             "
@@ -28,7 +29,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
                      + ",Telefono           "
                      + ",Correo             "
                      + "FROM Personal) sub  "
-                     + "WHERE IDPersonal = " + id.toString();
+                     + "WHERE Cedula = " + cedula;
                      
                      try (Connection conn = openConnection();
                      Statement stmt = conn.createStatement();
@@ -44,7 +45,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
                     );
                 }
             } catch (SQLException e) {
-                throw e; // Considerar manejar la excepción de manera más específica
+                throw new MsgException(e.getMessage(), getClass().getName(), "readBy()");
             }
             
             return personal;
@@ -83,7 +84,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
                 lst.add(personal);
             }
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "readAll()");
         }
 
         return lst;
@@ -104,7 +105,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
@@ -123,7 +124,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
                 pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -138,7 +139,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 
@@ -151,9 +152,10 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
             if (rs.next()) {
                 return rs.getInt(1);
             }
-        } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
         }
+            catch (SQLException e) {
+                throw new MsgException(e.getMessage(), getClass().getName(), "getRowCount()");
+            }
         return 0;
     }
 }

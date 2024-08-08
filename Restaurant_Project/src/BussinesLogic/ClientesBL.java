@@ -19,8 +19,8 @@ public class ClientesBL {
         return lst;
     }
 
-    public ClientesDTO getBy(int idCliente) throws Exception{
-        cliente = cDAO.readBy(idCliente);
+    public ClientesDTO getBy(String cedula) throws Exception{
+        cliente = cDAO.readBy(cedula);
         return cliente;
     }
 

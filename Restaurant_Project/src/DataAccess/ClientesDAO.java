@@ -8,11 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.ClientesDTO;
+import Framework.MsgException;
 
-public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
+public class ClientesDAO extends SQLiteDataHelper implements IGestionDAO<ClientesDTO> {
 
     @Override
-    public ClientesDTO readBy(Integer id) throws Exception {
+    public ClientesDTO readBy(String cedula) throws Exception {
         ClientesDTO cliente = new ClientesDTO();
         String query = "SELECT ID           "
                      + ",Cedula             "
@@ -28,7 +29,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
                      + ",Telefono           "
                      + ",Correo             "
                      + "FROM Clientes) sub  "
-                     + "WHERE IDCliente = " + id.toString();
+                     + "WHERE Cedula = " + cedula;
                      
                      try (Connection conn = openConnection();
                      Statement stmt = conn.createStatement();
@@ -44,7 +45,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
                     );
                 }
             } catch (SQLException e) {
-                throw e; // Considerar manejar la excepción de manera más específica
+                throw new MsgException(e.getMessage(), getClass().getName(), "readBy()");
             }
             
             return cliente;
@@ -83,7 +84,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
                 lst.add(clientes);
             }
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "readAll()");
         }
 
         return lst;
@@ -104,7 +105,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
@@ -123,7 +124,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
                 pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -138,7 +139,7 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
+            throw new MsgException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 
@@ -151,9 +152,11 @@ public class ClientesDAO extends SQLiteDataHelper implements IDAO<ClientesDTO> {
             if (rs.next()) {
                 return rs.getInt(1);
             }
-        } catch (SQLException e) {
-            throw e; // Considerar manejar la excepción de manera más específica
         }
+            catch (SQLException e) {
+                throw new MsgException(e.getMessage(), getClass().getName(), "getRowCount()");
+            }
         return 0;
     }
 }
+

@@ -22,7 +22,7 @@ public class App {
             System.out.println("Cliente creado: " + clienteCreado);
 
             // Actualizar un cliente
-            ClientesDTO clienteActualizar = clienteDAO.readBy(1);
+            ClientesDTO clienteActualizar = clienteDAO.readBy("1");
             if (clienteActualizar != null) {
                 clienteActualizar.setNombre("Juan Pablo");
                 boolean clienteActualizado = clienteDAO.update(clienteActualizar);
@@ -30,7 +30,7 @@ public class App {
             }
 
             // Leer cliente por ID
-            ClientesDTO clientePorID = clienteDAO.readBy(1);
+            ClientesDTO clientePorID = clienteDAO.readBy("1");
             System.out.println("Cliente con ID 1: " + clientePorID);
 
             // Eliminar un cliente
@@ -49,7 +49,7 @@ public class App {
             }
 
             // Actualizar un empleado
-            PersonalDTO empleadoActualizar = empleadoDAO.readBy(1);
+            PersonalDTO empleadoActualizar = empleadoDAO.readBy("1");
             if (empleadoActualizar != null) {
                 empleadoActualizar.setNombre("Ana María López");
                 boolean empleadoActualizado = empleadoDAO.update(empleadoActualizar);
@@ -57,7 +57,7 @@ public class App {
             }
 
             // Leer empleado por ID
-            PersonalDTO empleadoPorID = empleadoDAO.readBy(1);
+            PersonalDTO empleadoPorID = empleadoDAO.readBy("1");
             System.out.println("empleado con ID 1: " + empleadoPorID);
 
             // Eliminar un empleado
