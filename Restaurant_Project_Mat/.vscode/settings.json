@@ -1,7 +1,13 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "src/UserInterface/dist/lib/AbsoluteLayout.jar"
+        ],
+        "exclude": [
+            "src/UserInterface/dist/lib/sqlite-jdbc-3.40.0.0.jar"
+        ]
+    }
 }

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,125,0,0,3,41"/>
+  </AuxValues>
+
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="false"/>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Monotype Corsiva" size="24" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="10" y="10" width="110" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sitka Display" size="12" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-indent: 20px;&quot;&gt;Restaurante &quot;La Terreza del Sabor&quot;&lt;br&gt;      &#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt;&lt;strong&gt;Horario de Atenci&#xf3;n:&lt;/strong&gt; Lunes a Domingo, de 19:00 a 23:00&lt;/p&gt; &#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt;Bienvenido a &lt;strong&gt;La Terraza del Strong&lt;/strong&gt;, donde la riqueza de la&#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt;tradici&#xf3;n ecuatoriana se encuentra con la sofisticaci&#xf3;n moderna.&lt;br&gt;&#xa; &lt;p style=&quot;text-indent: 8px;&quot;&gt;Fundado en 2022, nuestro restaurante ofrece una experiencia &#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt;culinaria &#xfa;nica, combinando ingredientes frescos y sabores&#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt;   aut&#xf3;ctonos en un ambiente acogedor y elegante.         &#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt; Nuestro personal dedicado est&#xe1; comprometido a brindar una&#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt; velada inolvidable, ya sea para una cena rom&#xe1;ntica, una&#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt; celebraci&#xf3;n especial o una reuni&#xf3;n de negocios.&lt;/p&gt;  &#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt; Descubre el verdadero sabor del Ecuador en un entorno&#xa;&lt;p style=&quot;text-indent: 8px;&quot;&gt;amigable, d&#xe9;jate llevar por una experiencia gastron&#xf3;mica sin &#xa;&lt;p style=&quot;text-indent: 5px;&quot;&gt;igual."/>
+        <Property name="actionCommand" type="java.lang.String" value="&lt;html&gt;Restaurante &quot;La Terreza del Sabor&quot;&lt;br&gt;      &#xa;&lt;p style=&quot;text-indent: 20px;&quot;&gt;&lt;strong&gt;Horario de Atenci&#xf3;n:&lt;/strong&gt; Lunes a Domingo, de 19:00 a 23:00&lt;/p&gt; &#xa;&lt;p style=&quot;text-indent: 20px;&quot;&gt;&lt;br&gt;Bienvenido a &lt;strong&gt;La Terraza del Strong&lt;/strong&gt;, donde la riqueza de la tradici&#xf3;n&#xa;&lt;p style=&quot;text-indent: 20px;&quot;&gt; ecuatoriana se encuentra con la sofisticaci&#xf3;n moderna.Fundado en 2022, nuestro restaurante ofrece una experiencia culinaria &#xfa;nica, combinando ingredientes frescos y sabores aut&#xf3;ctonos en un ambiente acogedor y elegante.&lt;/p&gt;           &#xa;&lt;p style=&quot;text-indent: 20px;&quot;&gt;Nuestro personal dedicado est&#xe1; comprometido a brindar una velada inolvidable, ya sea para una cena rom&#xe1;ntica, una celebraci&#xf3;n especial o una reuni&#xf3;n de negocios.&lt;/p&gt;  &#xa; &lt;p style=&quot;text-indent: 20px;&quot;&gt;Descubre el verdadero sabor del Ecuador en un entorno amigable y elegante, y d&#xe9;jate llevar por una experiencia gastron&#xf3;mica sin igual.&lt;/p&gt;"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
+          </Border>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="inheritsPopupMenu" type="boolean" value="true"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[3, 14, 3, 14]"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="30" y="60" width="340" height="290"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/fondo-negro.jpg"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder bevelType="1"/>
+          </Border>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="420" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/InfRestaurante1.jpg"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="419" y="0" width="390" height="381"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+  </SubComponents>
+</Form>
