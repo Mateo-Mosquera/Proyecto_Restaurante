@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+import Restaurant_Project.DatabaseConnection;
+
 /**
  *
  * @author Gelen Ortiz
@@ -216,7 +218,38 @@ public class Reservaciones extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Reserva reserva = new Reserva();
        reserva.setVisible(true);
-       System.out.println("Hola");
+       String nombre = textNombre.getText();
+    String apellido = textApellido.getText();
+    String cedula = textCedula.getText();
+    String email = textEmail.getText();
+    String celular = textCelular.getText();
+    String fecha = textFecha.getText();
+    String hora = textHora.getText();
+    String personas = (String) BoxPersonas.getSelectedItem();
+
+    if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() || email.isEmpty() ||
+        celular.isEmpty() || fecha.isEmpty() || hora.isEmpty() || personas.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos los campos deben ser llenados.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try (Connection conn = DatabaseConnection.getConnection()) {
+        String sql = "INSERT INTO reservaciones (nombre, apellido, cedula, email, celular, fecha, hora, personas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, apellido);
+            pstmt.setString(3, cedula);
+            pstmt.setString(4, email);
+            pstmt.setString(5, celular);
+            pstmt.setString(6, fecha);
+            pstmt.setString(7, hora);
+            pstmt.setString(8, personas);
+            pstmt.executeUpdate();
+        }
+        JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al realizar la reserva: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
