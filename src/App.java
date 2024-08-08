@@ -6,7 +6,7 @@ import DataAccess.ClienteDAO;
 import DataAccess.DTO.ClienteDTO;
 import DataAccess.GerenteDAO;
 import DataAccess.DTO.GerenteDTO;
-import Resource.GeneradorCodigoQR;
+import BussinesLogic.GeneradorCodigoQrBL;
 
 public class App {
 
@@ -15,7 +15,7 @@ public class App {
 
     public static void main(String[] args) {
         try {
-            GeneradorCodigoQR.generarImagenCodigoQR("https://drive.google.com/file/d/1dUuvbiZ79wVbcm7gPoR--oe0KB52tHEH/view?usp=sharing", 350, 350, QR_CODE_IMAGE_PATH);
+            GeneradorCodigoQrBL.generarImagenCodigoQR("https://drive.google.com/file/d/1dUuvbiZ79wVbcm7gPoR--oe0KB52tHEH/view?usp=sharing", 350, 350, QR_CODE_IMAGE_PATH);
         } catch (WriterException | IOException e) {
             System.err.println("Error al generar el codigo" + e.getMessage());
         }

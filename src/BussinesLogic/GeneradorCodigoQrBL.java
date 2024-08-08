@@ -1,4 +1,4 @@
-package Resource;
+package BussinesLogic;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
-public class GeneradorCodigoQR {
+public class GeneradorCodigoQrBL {
 
     public static void generarImagenCodigoQR(String texto, int ancho, int alto, String rutaArchivo) throws WriterException, IOException {
         QRCodeWriter escritorCodigoQR = new QRCodeWriter();
